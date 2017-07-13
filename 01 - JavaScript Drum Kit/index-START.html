@@ -58,6 +58,20 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  const pads = Array.from(document.getElementsByClassName('key'))
+
+  document.onkeydown = e => {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    console.log(audio);
+    if (audio) {
+      playSound(audio)
+    }
+  }
+
+  function playSound(audio){
+    audio.currentTime = 0;
+    audio.play();
+  }
 
 </script>
 

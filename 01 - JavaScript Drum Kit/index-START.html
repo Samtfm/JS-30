@@ -58,28 +58,28 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  const pads = Array.from(document.getElementsByClassName('key'))
+  const pads = document.querySelectorAll('.key');
+  pads.forEach(pad => {
+    pad.addEventListener("transitionend", transitionEnd)
+  });
+
+  function transitionEnd(e) {
+    if (e.propertyName !== 'transform') return
+    this.classList.remove('playing');
+  }
 
   document.onkeydown = e => {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
-    console.log(audio);
     if (audio) {
       playSound(audio);
     }
     const pad = document.querySelector(`div[data-key="${e.keyCode}"]`)
-    if (pad) animatePad(pad);
-    console.log(pad);
+    if (pad) pad.classList.add("playing");
   }
 
   function playSound(audio){
     audio.currentTime = 0;
     audio.play();
-  }
-  function animatePad(pad){
-    pad.classList.add("playing");
-    setTimeout(() => {
-      pad.classList.remove("playing");
-    }, 100);
   }
 
 </script>

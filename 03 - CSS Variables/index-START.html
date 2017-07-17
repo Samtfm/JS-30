@@ -23,8 +23,8 @@
   <style>
   :root {
     --base: #ffc600;
-    --spacing: 10px;
-    --blur: 10px;
+    --spacing: 20px;
+    --blur: 4px;
   }
     /*
       misc styles, nothing to do with CSS variables
@@ -51,9 +51,15 @@
       width:100px;
     }
   </style>
-    
   <script>
-
+    const blurSlider = document.querySelector('#blur');
+    blurSlider.addEventListener("change", e => {
+      console.log(e.target.value);
+    })
+    const spacingSlider = document.querySelector('#spacing');
+    spacingSlider.addEventListener("change", e => {
+      console.log(e.target.value);
+    })
 
   </script>
 
